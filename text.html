@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Text Editor</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 20px;
+        }
+
+        .editor {
+            width: 800px;
+            max-width: 100%;
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            font-size: 26px;
+            color: #222;
+        }
+
+        .header span {
+            background: #f1f3f5;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 15px;
+            background: #f7f8fc;
+            border-radius: 14px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            border: none;
+            background: white;
+            color: #333;
+            padding: 10px 15px;
+            border-radius: 9px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 2px 7px rgba(0, 0, 0, 0.08);
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .size-buttons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .size-buttons button {
+            width: 42px;
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        .color-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            padding: 5px 8px;
+            border-radius: 9px;
+            box-shadow: 0 2px 7px rgba(0, 0, 0, 0.08);
+        }
+
+        #color {
+            width: 35px;
+            height: 35px;
+            border: none;
+            cursor: pointer;
+            background: transparent;
+        }
+
+        textarea {
+            width: 100%;
+            height: 350px;
+            resize: vertical;
+            border: 2px solid #e4e6ef;
+            outline: none;
+            border-radius: 14px;
+            padding: 20px;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #222;
+            transition: 0.2s;
+        }
+
+        textarea:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.12);
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            color: #777;
+            font-size: 13px;
+        }
+
+        .developer {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .clear {
+            background: #ffeded;
+            color: #e53935;
+        }
+
+        .clear:hover {
+            background: #e53935;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+
+            .editor {
+                padding: 15px;
+            }
+
+            .header h1 {
+                font-size: 21px;
+            }
+
+            textarea {
+                height: 300px;
+            }
+
+            .toolbar {
+                gap: 7px;
+            }
+
+            button {
+                padding: 9px 11px;
+            }
+
+            .footer {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+    <div class="editor">
+
+
+        <!-- HEADER -->
+
+        <div class="header">
+
+            <h1> Text Editor</h1>
+
+
+        </div>
+
+
+        <!-- TOOLBAR -->
+
+        <div class="toolbar">
+
+            <button onclick="SetOp('bold')">
+                <b></b> Bold
+            </button>
+
+            <button onclick="SetOp('italic')">
+                <i></i> Italic
+            </button>
+
+            <button onclick="SetOp('underline')">
+                <u></u> Underline
+            </button>
+
+
+            <div class="size-buttons">
+
+                <button onclick="SetOp('increase')">
+                    +
+                </button>
+
+                <button onclick="SetOp('dec')">
+                    −
+                </button>
+
+            </div>
+
+
+            <div class="color-box">
+
+                🎨
+
+                <input
+                    type="color"
+                    id="color"
+                    value="#222222"
+                >
+
+            </div>
+
+
+            <button onclick="SetOp('color')">
+                Set Color
+            </button>
+
+
+            <button
+                class="clear"
+                onclick="clearText()"
+            >
+                🗑 Clear
+            </button>
+
+        </div>
+
+
+        <!-- TEXTAREA -->
+
+        <textarea
+            id="textarea"
+         
+        ></textarea>
+
+
+        <!-- FOOTER -->
+
+        <div class="footer">
+
+            
+
+      
+
+            <span class="developer">
+                Developer: Muhammad Raheem
+            </span>
+
+        </div>
+
+
+    </div>
+
+
+
+  <script src="app.js"></script>
+</body>
+
+</html>
+
